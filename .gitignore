@@ -1,0 +1,43 @@
+# Ambiente virtual
+venv/
+env/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Arquivos de modelo grandes (usar Git LFS se necessário)
+# weights.pth
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Streamlit
+.streamlit/
+
+# macOS
+.DS_Store
+
+# Arquivos de imagem de teste
+photo_*.jpg
+*.jpg
+*.jpeg
+*.png
+!poder.png
+
+# Logs
+*.log
+
+# Arquivos temporários
+*.tmp
+*.bak
+
