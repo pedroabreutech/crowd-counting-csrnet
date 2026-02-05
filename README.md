@@ -1,4 +1,4 @@
-# Sistema de Contagem de Multidão - Poder360
+# Sistema de Contagem de Multidão 
 
 Sistema de contagem de pessoas em imagens usando deep learning com a arquitetura CSRNet.
 
