@@ -6,12 +6,13 @@ from PIL import Image
 import numpy as np
 from torchvision import transforms
 from matplotlib import pyplot as plt
+import pandas as pd
 
 # -----------------------------
 # CONFIGURAÇÃO DA PÁGINA
 # -----------------------------
 st.set_page_config(
-    page_title="Contagem de Multidão | Poder360",
+    page_title="Crowd Counting System",
     page_icon="📸",
     layout="wide"
 )
@@ -21,10 +22,10 @@ st.set_page_config(
 # -----------------------------
 st.markdown(
     """
-    <h1 style='text-align: center; color: #1a1a1a; font-size: 42px; font-weight: 700;'>
-        Contagem de Multidão <span style="color:#0066cc;">Poder360</span>
+    <h1 style='text-align: center; color: #1e88e5; font-size: 42px; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.6);'>
+        Crowd Counting System
     </h1>
-    <p style='text-align: center; margin-top: -10px; color: #444; font-size: 18px;'>
+    <p style='text-align: center; margin-top: -10px; color: #90caf9; font-size: 18px;'>
         
     </p>
     <br>
@@ -104,6 +105,53 @@ if uploaded_file:
         """,
         unsafe_allow_html=True
     )
+
+    # -----------------------------
+    # DADOS ADICIONAIS E ACURÁCIA
+    # -----------------------------
+    st.markdown("### 🔢 Detalhes da previsão")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.metric("Contagem prevista", f"{count}")
+
+    with col2:
+        usar_real = st.checkbox(
+            "Tenho a contagem real",
+            help="Marque para informar a contagem real e calcular a acurácia."
+        )
+
+    real_count = None
+    if usar_real:
+        real_count = st.number_input(
+            "Informe a contagem real",
+            min_value=1,
+            step=1,
+            value=1,
+            help="Insira o número real de pessoas para comparar com a previsão."
+        )
+
+    if real_count is not None and real_count > 0:
+        erro_abs = abs(real_count - count)
+        erro_rel = erro_abs / real_count if real_count != 0 else 0
+        acuracia = max(0.0, 1 - erro_rel) * 100
+
+        st.markdown("### 📈 Acurácia da previsão")
+
+        c1, c2, c3 = st.columns(3)
+        with c1:
+            st.metric("Contagem real", f"{real_count}")
+        with c2:
+            st.metric("Erro absoluto", f"{erro_abs}")
+        with c3:
+            st.metric("Acurácia", f"{acuracia:.2f}%")
+
+        # Gráfico comparando previsão x real
+        df_comp = pd.DataFrame(
+            {"Contagem": [count, real_count]},
+            index=["Prevista", "Real"]
+        )
+        st.bar_chart(df_comp, use_container_width=True)
 
     # -----------------------------
     # HEATMAP
