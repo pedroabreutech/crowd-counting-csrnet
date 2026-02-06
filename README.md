@@ -95,9 +95,9 @@ Sistema_Contagem/
 
 ## 👤 Autor
 
-Desenvolvido para Poder360
+Pedro Abreu
 
 ## 📄 Licença
 
-Este projeto é de uso interno da Poder360.
+Este projeto é de uso público.
 
