@@ -25,9 +25,6 @@ st.markdown(
     <h1 style='text-align: center; color: #1e88e5; font-size: 42px; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.6);'>
         Crowd Counting System
     </h1>
-    <p style='text-align: center; margin-top: -10px; color: #90caf9; font-size: 18px;'>
-        
-    </p>
     <br>
     """,
     unsafe_allow_html=True
@@ -36,6 +33,15 @@ st.markdown(
 st.markdown(
     """<hr style="border:1px solid #e6e6e6; margin-top:-20px; margin-bottom:30px;">""",
     unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    ### 🏙️ Estimativa de público em espaços externos
+    Ideal para espaços amplos e abertos, como **ruas, festivais, parques ou eventos públicos**.
+
+    Desenvolvido com a tecnologia **CSRNet** — um modelo de aprendizado profundo que cria mapas de calor para estimar o número de pessoas, especialmente em multidões densas.
+    """
 )
 
 # -----------------------------
